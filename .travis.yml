@@ -11,9 +11,11 @@ before_script:
 jobs:
   include:
     - stage: compile
+      skip_cleanup: true
       script:
         - cmake . && make
     - stage: package
+      skip_cleanup: true
       script:
         - tar -cvzf package.tar.gz vacuum
         - rm ./vacuum
