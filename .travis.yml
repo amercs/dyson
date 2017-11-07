@@ -11,5 +11,6 @@ before_script:
 script:
   - cmake . && make
   - tar -cvzf package.tar.gz vacuum
-  - tar -cxzf package.tar.gz
+  - rm ./vacuum
+  - tar -xvzf package.tar.gz
   - ./vacuum
