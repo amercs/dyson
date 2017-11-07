@@ -8,9 +8,16 @@ before_install:
 before_script:
   - sudo apt-get install cmake3
 
-script:
-  - cmake . && make
-  - tar -cvzf package.tar.gz vacuum
-  - rm ./vacuum
-  - tar -xvzf package.tar.gz
-  - ./vacuum
+jobs:
+  include:
+    - stage: compile
+      script:
+        - cmake . && make
+    - stage: package
+      script:
+        - tar -cvzf package.tar.gz vacuum
+        - rm ./vacuum
+    - stage: test
+      script:
+        - tar -xvzf package.tar.gz
+        - ./vacuum
