@@ -11,7 +11,8 @@ before_script:
 script:
   - source $HOME/.nix-profile/etc/profile.d/nix.sh
   - nix-env --version
-  - nix-env -f ./default.nix -qa
+  - nix-env -q
+  - nix-shell
   - cmake . && make
   - tar -cvzf package.tar.gz vacuum
   - rm ./vacuum
