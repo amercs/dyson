@@ -2,6 +2,9 @@ language: nix
 compiler: gcc
 os: linux
 
+env:
+  - NIXPKGS_ALLOW_UNFREE=1
+
 before_install:
   - sudo apt-get update --quiet
 
