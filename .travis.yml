@@ -15,7 +15,7 @@ script:
   - source $HOME/.nix-profile/etc/profile.d/nix.sh
   - nix-env --version
   - nix-env -q
-  - nix-shell --run 'which cmake'
+  - nix-shell --command 'which cmake;'
   - pwd
   - ls
   - cmake . && make
