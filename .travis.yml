@@ -12,7 +12,9 @@ script:
   - source $HOME/.nix-profile/etc/profile.d/nix.sh
   - nix-env --version
   - nix-env -q
-  - nix-shell
+  - nix-shell --run 'which cmake'
+  - pwd
+  - ls
   - cmake . && make
   - tar -cvzf package.tar.gz vacuum
   - rm ./vacuum
