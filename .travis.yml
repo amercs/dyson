@@ -4,22 +4,16 @@ os: linux
 
 before_install:
   - sudo apt-get update --quiet
+  - bash <(curl https://nixos.org/nix/install)
+
 
 before_script:
   - sudo apt-get install cmake3
 
-jobs:
-  include:
-    - stage: compile
-      skip_cleanup: true
-      script:
-        - cmake . && make
-    - stage: package
-      skip_cleanup: true
-      script:
-        - tar -cvzf package.tar.gz vacuum
-        - rm ./vacuum
-    - stage: test
-      script:
-        - tar -xvzf package.tar.gz
-        - ./vacuum
+script:
+- cmake . && make
+- tar -cvzf package.tar.gz vacuum
+- rm ./vacuum
+- tar -xvzf package.tar.gz
+- ./vacuum
+
