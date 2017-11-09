@@ -9,10 +9,11 @@ before_script:
   - sudo apt-get install cmake3
 
 script:
-- nix-env --version
-- nix-env -f ./default.nix -qa
-- cmake . && make
-- tar -cvzf package.tar.gz vacuum
-- rm ./vacuum
-- tar -xvzf package.tar.gz
-- ./vacuum
+  - source $HOME/.nix-profile/etc/profile.d/nix.sh
+  - nix-env --version
+  - nix-env -f ./default.nix -qa
+  - cmake . && make
+  - tar -cvzf package.tar.gz vacuum
+  - rm ./vacuum
+  - tar -xvzf package.tar.gz
+  - ./vacuum
