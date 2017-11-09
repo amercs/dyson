@@ -1,12 +1,9 @@
-language: cpp
+language: nix
 compiler: gcc
 os: linux
 
 before_install:
   - sudo apt-get update --quiet
-  - bash <(curl https://nixos.org/nix/install)
-  - . /home/travis/.nix-profile/etc/profile.d/nix.sh
-
 
 before_script:
   - sudo apt-get install cmake3
